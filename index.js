@@ -15,6 +15,17 @@ app.get("/", (req, res) => {
   res.send("Hola Mundo");
 });
 
+app.post("/user", (req, res) => {
+  res.send({ respuesta: "Hola desde POST!" });
+  console.log(req.headers);
+  console.log(req.body);
+});
+
+app.delete("/user/:id", (req, res) => {
+  res.send(`La cuenta ${req.params.id} ha sido eliminada.`);
+  console.log(`Usuario ${req.params.id} borrado satisfactoriamente`);
+});
+
 app.listen(app.get("port"), () => {
   console.log(app.get("appName"));
   console.log("Servidor funcionando en puerto", app.get("port"));
